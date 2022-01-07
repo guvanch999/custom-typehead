@@ -16,6 +16,7 @@
         @focus="isFocused = true"
         @blur="handleBlur"
         @input="handleInput($event.target.value)"
+        @keyup.enter="handleEnterClick"
         autocomplete="off"
       />
       <div v-if="$slots.append || append" class="input-group-append">
@@ -158,6 +159,9 @@ export default {
       if (typeof this.value !== 'undefined') {
         this.$emit('input', newValue)
       }
+    },
+    handleEnterClick(){
+      this.$emit('enterHandler');
     }
   },
 
